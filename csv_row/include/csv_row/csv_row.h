@@ -10,15 +10,16 @@
 
 namespace csv_row {
 
+
     class CsvRow
     {
     public:
         char sep = ';';
-        CsvRow() {}
-        CsvRow(char sep) : sep(sep) {}
-        std::string const& operator[](std::size_t index) const;
-        std::size_t size() const;
-        void readNextRow(std::istream& str);
+        inline CsvRow() {}
+        inline CsvRow(char sep) : sep(sep) {}
+        inline std::string const& operator[](std::size_t index) const;
+        inline std::size_t size() const;
+        inline void readNextRow(std::istream& str);
 
     private:
         std::vector<std::string> m_data;
@@ -58,7 +59,7 @@ namespace csv_row {
 
 } // namespace csv_row
 
-std::istream& operator>>(std::istream& str, csv_row::CsvRow& data)
+inline std::istream& operator>>(std::istream& str, csv_row::CsvRow& data)
 {
     data.readNextRow(str);
     return str;
