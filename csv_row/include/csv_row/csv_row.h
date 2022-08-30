@@ -20,7 +20,13 @@ namespace csv_row {
         inline std::string const& operator[](std::size_t index) const;
         inline std::size_t size() const;
         inline void readNextRow(std::istream& str);
-
+        inline T get(std::size_t index) const
+        {
+            std::stringstream ss(operator[](index));
+            T result{};
+            ss >> result;
+            return result;
+        }
     private:
         std::vector<std::string> m_data;
     };
@@ -74,6 +80,7 @@ inline std::istream& operator>>(std::istream& str, csv_row::CsvRow& data)
 //     csv_row::CsvRow row;
 //     while(file >> row)
 //     {
-//         std::cout << "4th Element(" << row[3] << ")\n";
+//         std::cout << "3rd Element parsed as float (" << row.get<float>(2) << ")\n";
+//         std::cout << "4th Element as string (" << row[3] << ")\n";
 //     }
 // }
