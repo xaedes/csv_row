@@ -10,7 +10,8 @@ int main()
     csv_row::CsvRow row;
     while(file >> row)
     {
-        std::cout << "4th Element(" << row[3] << ")\n";
+        std::cout << "3rd Element parsed as float (" << row.get<float>(2) << ")\n";
+        std::cout << "4th Element as string (" << row[3] << ")\n";
     }
 }
 ```
