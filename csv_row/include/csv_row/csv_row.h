@@ -20,6 +20,7 @@ namespace csv_row {
         inline std::string const& operator[](std::size_t index) const;
         inline std::size_t size() const;
         inline void readNextRow(std::istream& str);
+        template<class T>
         inline T get(std::size_t index) const
         {
             std::stringstream ss(operator[](index));
